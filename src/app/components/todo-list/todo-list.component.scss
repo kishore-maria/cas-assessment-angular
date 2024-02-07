@@ -1,0 +1,28 @@
+table {
+	width: 100%;
+}
+
+.mat-column-status {
+	text-transform: capitalize;
+}
+
+.mat-column-actions {
+	width: 15%;
+
+	button {
+		margin: 0px 5px 0px 0px;
+	}
+}
+
+.noRow {
+	position: relative;
+	display: block;
+	top: 68px;
+	text-align: center;
+	padding: 100px 0 100px 0;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 32px;
+	font-family: Roboto, sans-serif;
+	letter-spacing: .0125em;
+}

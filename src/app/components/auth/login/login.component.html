@@ -1,0 +1,32 @@
+<div class="form">
+    <div class="main_container">
+        <div>
+            <h4>Login</h4>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <form [formGroup]="loginForm">
+            <div class="flex">
+                <mat-form-field>
+                    <mat-label>User name</mat-label>
+                    <input matInput formControlName="userName">
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                </mat-form-field>
+            </div>
+
+            <div class="container">
+                <button mat-raised-button class="submit" color="primary" (click)="onLogin()">Login</button>
+            </div>
+
+            <div class="container linkDiv">
+                <a routerLink="/signup">Create new account</a>
+            </div>
+        </form>
+    </div>
+</div>

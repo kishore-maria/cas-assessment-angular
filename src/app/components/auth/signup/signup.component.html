@@ -1,0 +1,43 @@
+<div class="form">
+    <div class="main_container">
+        <div>
+            <h4>Signup</h4>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <form [formGroup]="userForm">
+            <div class="flex">
+                <mat-form-field>
+                    <mat-label>User name</mat-label>
+                    <input matInput formControlName="userName">
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field>
+                    <mat-label>Confirm password</mat-label>
+                    <input matInput type="password" formControlName="confirmPassword">
+                    <mat-error class="errorMsg" *ngIf="passMismatchErr">
+                        <p ngxError="required">Password and confirm password should be matched</p>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="container"
+                [ngClass]="{'errorMsgBut': (userForm.value.password !== userForm.value.confirmPassword) && passMismatchErr}">
+                <button mat-raised-button class="submit" color="primary" (click)="onSignup()">Signup</button>
+            </div>
+
+            <div class="container linkDiv"
+                [ngClass]="{'errorMsgBut': (userForm.value.password !== userForm.value.confirmPassword) && passMismatchErr}">
+                Already have an account <a routerLink="/login">Login</a>
+            </div>
+        </form>
+    </div>
+</div>

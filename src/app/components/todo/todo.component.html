@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <span>CAS assessment</span>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+</mat-toolbar>
+
+<div class="mainContainer">
+    <div class="actionContainer">
+        <p class="title">Todo list</p>
+        <button mat-raised-button color="primary" (click)="addTodo()">Add new</button>
+    </div>
+    <div class="listContainer">
+        <app-todo-list (emitCustomEvent)="doTodoAction($event)"></app-todo-list>
+    </div>
+    <div class="bottomContainer" *ngIf="todoList.length">
+        <button mat-raised-button color="primary" [disabled]="!isOnline" (click)="saveChanges()">Save changes</button>
+    </div>
+</div>

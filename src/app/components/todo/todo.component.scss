@@ -1,0 +1,36 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mainContainer {
+    display: block;
+		padding: 0 15px 0 15px;
+  }
+
+	.listContainer {
+		display: block;
+    margin: 5% 0 0 0;
+	}
+
+	.bottomContainer {
+		position: relative;
+    float: right;
+    top: 15px;
+	}
+
+	.actionContainer button {
+		position: relative;
+    float: right;
+    bottom: 10px;
+	}
+
+	.title {
+		position: absolute;
+    float: left;
+    margin: 0 0 0 0;
+		font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: .0125em;
+	}

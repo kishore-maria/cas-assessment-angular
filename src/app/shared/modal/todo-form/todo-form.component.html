@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{data.editMode ? 'Update todo' : 'Add todo'}}</h2>
+<mat-dialog-content>
+	<form [formGroup]="todoForm">
+		<div class="flex">
+			<mat-form-field>
+				<mat-label>Title</mat-label>
+				<input matInput formControlName="title">
+			</mat-form-field>
+		</div>
+		<div class="flex">
+			<mat-form-field>
+				<mat-label>Status</mat-label>
+				<mat-select formControlName="status">
+					<mat-option value="todo" aria-selected="true">Todo</mat-option>
+					<mat-option value="inprogress">Inprogress</mat-option>
+					<mat-option value="done">Done</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-raised-button mat-dialog-close>Cancel</button>
+	<button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Okay</button>
+</mat-dialog-actions>
