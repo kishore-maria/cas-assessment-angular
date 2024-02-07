@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Todo, UpdateTodo } from 'src/app/models/todo.model';
 import { SharedService } from 'src/app/services/shared.service';
+import { ConfirmPopupComponent } from 'src/app/shared/modal/confirm-popup/confirm-popup.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,7 +23,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   @Output() emitCustomEvent: EventEmitter<UpdateTodo> = new EventEmitter();
 
   constructor(
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +42,19 @@ export class TodoListComponent implements OnInit, OnDestroy {
       action: 'edit'
     }
     this.emitCustomEvent.emit(data);
+  }
+
+  openDeleteDialog(todo: Todo) {
+    const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+      data: { title: 'Delete todo', message: `Would you like to delete "${todo.title}"?`, todo },
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.deleteTodo(todo);
+      }
+    });
   }
 
   deleteTodo(todo: Todo) {

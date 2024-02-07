@@ -5,6 +5,7 @@ import { Todo, UpdateTodo } from 'src/app/models/todo.model';
 import { SharedService } from 'src/app/services/shared.service';
 import { TodoService } from 'src/app/services/todo.service';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmPopupComponent } from 'src/app/shared/modal/confirm-popup/confirm-popup.component';
 import { TodoFormComponent } from 'src/app/shared/modal/todo-form/todo-form.component';
 
 @Component({
@@ -126,7 +127,21 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.userService.logout();
+    if (localStorage.getItem('offlineData')) {
+      const dialogRef = this.dialog.open(ConfirmPopupComponent, {
+        data: { title: 'Logout', message: `Unsaved changes are there. You may loss your changes. Are you sure want to logout.?`},
+        disableClose: true
+      });
+  
+      dialogRef.afterClosed().subscribe(res => {
+        if (res) {
+          this.userService.logout();
+        }
+      });
+      return;
+    } else {
+      this.userService.logout();
+    }
   }
 
   ngOnDestroy(): void {
