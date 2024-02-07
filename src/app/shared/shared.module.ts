@@ -14,10 +14,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { TodoFormComponent } from './modal/todo-form/todo-form.component';
+import { ConfirmPopupComponent } from './modal/confirm-popup/confirm-popup.component';
 
 @NgModule({
   declarations: [
-    TodoFormComponent
+    TodoFormComponent,
+    ConfirmPopupComponent
   ],
   imports: [
     CommonModule,
